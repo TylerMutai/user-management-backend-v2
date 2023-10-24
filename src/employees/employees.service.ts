@@ -34,6 +34,7 @@ export class EmployeesService {
       const cuParams = employeeDetails.get(user.id);
       user.employeeProfile = this.employeesEntityRepository.create(cuParams);
     }
+    console.log('USER', users);
 
     return this.usersEntityRepository.save(users);
   }

@@ -1,5 +1,12 @@
-import { Column, Entity, Generated, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Generated,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ModelTimestamp } from '../typeorm/entities/modelTimestamp.entity';
+import { EmployeesEntity } from '../employees/employees.entity';
 
 @Entity({ name: 'position' })
 export class PositionEntity extends ModelTimestamp {
@@ -11,4 +18,7 @@ export class PositionEntity extends ModelTimestamp {
 
   @Generated('increment')
   rank: number;
+
+  @OneToMany(() => EmployeesEntity, (employee) => employee.position)
+  employees: EmployeesEntity[];
 }

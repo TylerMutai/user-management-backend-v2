@@ -4,6 +4,7 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -20,11 +21,12 @@ export class EmployeesEntity extends ModelTimestamp {
 
   @OneToOne(() => UsersEntity, (user) => user.employeeProfile, {
     onDelete: 'CASCADE',
+    nullable: false,
   })
   @JoinColumn()
   user: UsersEntity;
 
-  @OneToOne(() => DepartmentEntity, {
+  @ManyToOne(() => DepartmentEntity, (department) => department.employees, {
     eager: true,
   })
   @JoinColumn()
@@ -33,7 +35,7 @@ export class EmployeesEntity extends ModelTimestamp {
   @Column()
   departmentId: number;
 
-  @OneToOne(() => PositionEntity, {
+  @ManyToOne(() => PositionEntity, (position) => position.employees, {
     eager: true,
   })
   @JoinColumn()

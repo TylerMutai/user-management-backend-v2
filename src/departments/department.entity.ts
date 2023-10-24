@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ModelTimestamp } from '../typeorm/entities/modelTimestamp.entity';
+import { EmployeesEntity } from '../employees/employees.entity';
 
 @Entity({ name: 'department' })
 export class DepartmentEntity extends ModelTimestamp {
@@ -8,4 +9,7 @@ export class DepartmentEntity extends ModelTimestamp {
 
   @Column()
   name: string;
+
+  @OneToMany(() => EmployeesEntity, (employee) => employee.department)
+  employees: EmployeesEntity[];
 }

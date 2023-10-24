@@ -26,6 +26,7 @@ export class UsersService {
         'name',
         'employeeProfile.department.name',
         'employeeProfile.position.name',
+        'employeeProfile.position.rank',
       ],
       defaultSortBy: [['id', 'DESC']],
       searchableColumns: [

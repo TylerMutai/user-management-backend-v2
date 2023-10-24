@@ -8,6 +8,8 @@ import { DataSource } from 'typeorm';
 import { Migrations1698151737574 } from './typeorm/migrations/1698151737574-migrations';
 import { Migrations1698165099749 } from './typeorm/migrations/1698165099749-migrations';
 import { Migrations1698167495187 } from './typeorm/migrations/1698167495187-migrations';
+import { Migrations1698169725869 } from './typeorm/migrations/1698169725869-migrations';
+import { Migrations1698170497734 } from './typeorm/migrations/1698170497734-migrations';
 
 const MysqlDataSource: TypeOrmModuleOptions = {
   type: 'mysql',
@@ -28,6 +30,8 @@ const MysqlDataSource: TypeOrmModuleOptions = {
     Migrations1698151737574,
     Migrations1698165099749,
     Migrations1698167495187,
+    Migrations1698169725869,
+    Migrations1698170497734,
   ],
   synchronize: false,
 };
