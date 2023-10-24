@@ -5,24 +5,23 @@ import { PositionsModule } from './positions/positions.module';
 import { DepartmentsModule } from './departments/departments.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MysqlDataSource } from './datasource';
+import { Database } from './database/database';
+import { DatabaseModule } from './database/database.module';
+import { TeamsModule } from './teams/teams.module';
+import { EmployeesModule } from './employees/employees.module';
 
 @Module({
+  controllers: [AppController],
   imports: [
     PositionsModule,
     DepartmentsModule,
     UsersModule,
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'phpmyadmin',
-      password: 'phpmyadmin',
-      database: 'user-management-backend-v2',
-      entities: [],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(MysqlDataSource),
+    DatabaseModule,
+    TeamsModule,
+    EmployeesModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, Database],
 })
 export class AppModule {}
