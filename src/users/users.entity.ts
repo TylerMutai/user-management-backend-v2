@@ -10,9 +10,6 @@ export class UsersEntity extends ModelTimestamp {
   @Column()
   name: string;
 
-  @OneToOne(() => EmployeesEntity, {
-    onDelete: 'CASCADE',
-    cascade: true,
-  })
+  @OneToOne(() => EmployeesEntity, (employeeProfile) => employeeProfile.user)
   employeeProfile: EmployeesEntity;
 }

@@ -14,7 +14,6 @@ export class UsersService {
 
   getAll(query: PaginateQuery) {
     return paginate(query, this.usersEntityRepository, {
-      loadEagerRelations: true,
       relations: {
         employeeProfile: {
           department: true,

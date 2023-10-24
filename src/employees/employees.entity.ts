@@ -18,7 +18,12 @@ export class EmployeesEntity extends ModelTimestamp {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => UsersEntity)
+  @OneToOne(() => UsersEntity, (user) => user.employeeProfile, {
+    eager: true,
+    nullable: true,
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   user: UsersEntity;
 
