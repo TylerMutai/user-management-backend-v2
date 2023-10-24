@@ -1,6 +1,6 @@
 import { UsersEntity } from './users/users.entity';
 import { DepartmentEntity } from './departments/department.entity';
-import { EmployeesEntity } from './employees/employees.entity';
+import { EmployeesEntity } from './users/employees/employees.entity';
 import { PositionEntity } from './positions/position.entity';
 import { TeamEntity } from './teams/team.entity';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';

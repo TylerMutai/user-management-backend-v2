@@ -6,10 +6,9 @@ import { DepartmentsModule } from './departments/departments.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MysqlDataSource } from './datasource';
-import { Database } from './database/database';
 import { DatabaseModule } from './database/database.module';
 import { TeamsModule } from './teams/teams.module';
-import { EmployeesModule } from './employees/employees.module';
+import { EmployeesModule } from './users/employees/employees.module';
 
 @Module({
   controllers: [AppController],
@@ -22,6 +21,6 @@ import { EmployeesModule } from './employees/employees.module';
     TeamsModule,
     EmployeesModule,
   ],
-  providers: [AppService, Database],
+  providers: [AppService],
 })
 export class AppModule {}

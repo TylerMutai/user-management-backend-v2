@@ -63,6 +63,12 @@ export class UsersService {
     return this.usersEntityRepository.save(user);
   }
 
+  async createAll(userDetailsArray: CreateUserParams[]) {
+    const usersDT = this.usersEntityRepository.create(userDetailsArray);
+    const users = await this.usersEntityRepository.save(usersDT);
+    return this.usersEntityRepository.save(users);
+  }
+
   update() {}
 
   delete() {}

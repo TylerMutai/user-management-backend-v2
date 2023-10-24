@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ModelTimestamp } from '../typeorm/entities/modelTimestamp.entity';
-import { EmployeesEntity } from '../employees/employees.entity';
+import { EmployeesEntity } from './employees/employees.entity';
 
 @Entity({ name: 'user' })
 export class UsersEntity extends ModelTimestamp {

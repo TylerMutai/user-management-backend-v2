@@ -11,6 +11,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dtos/createUserDto';
 import { GetOneUserDto } from './dtos/getOneUserDto';
 import { Paginate, PaginateQuery } from 'nestjs-paginate';
+import { CreateMultipleUserDto } from './dtos/createMultipleUserDto';
 
 @Controller('users')
 export class UsersController {
@@ -29,6 +30,11 @@ export class UsersController {
   @Post('')
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
+  }
+
+  @Post('many')
+  createMany(@Body() createUsersDto: CreateMultipleUserDto) {
+    return this.userService.createAll(createUsersDto.users);
   }
 
   @Patch(':id')
