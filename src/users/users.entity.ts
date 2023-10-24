@@ -10,6 +10,9 @@ export class UsersEntity extends ModelTimestamp {
   @Column()
   name: string;
 
-  @OneToOne(() => EmployeesEntity, (employeeProfile) => employeeProfile.user)
+  @OneToOne(() => EmployeesEntity, (employeeProfile) => employeeProfile.user, {
+    cascade: true,
+    eager: true,
+  })
   employeeProfile: EmployeesEntity;
 }
