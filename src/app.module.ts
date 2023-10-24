@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MysqlDataSource } from './datasource';
 import { DatabaseModule } from './database/database.module';
 import { TeamsModule } from './teams/teams.module';
-import { EmployeesModule } from './users/employees/employees.module';
+import { EmployeesModule } from './employees/employees.module';
 
 @Module({
   controllers: [AppController],

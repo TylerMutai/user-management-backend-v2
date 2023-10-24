@@ -1,13 +1,12 @@
 import { DataSource } from 'typeorm';
-import { MysqlDataSource } from '../datasource';
-import { DATA_SOURCE } from '../utils/constants';
+import { DATA_SOURCE, POSITIONS_REPOSITORY } from '../utils/constants';
+import { PositionEntity } from './position.entity';
 
 export const positionsProviders = [
   {
-    provide: DATA_SOURCE,
-    useFactory: async () => {
-      const dataSource = new DataSource(MysqlDataSource as any);
-      return dataSource.initialize();
-    },
+    provide: POSITIONS_REPOSITORY,
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(PositionEntity),
+    inject: [DATA_SOURCE],
   },
 ];

@@ -7,7 +7,7 @@ export type GetOneUserParams = {
 };
 
 export type CreateUserEmployeeProfileParams = {
-  user_id: number;
+  userId: number;
   departmentId: number;
   positionId: number;
 };

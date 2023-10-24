@@ -7,15 +7,20 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ModelTimestamp } from '../../typeorm/entities/modelTimestamp.entity';
-import { DepartmentEntity } from '../../departments/department.entity';
-import { PositionEntity } from '../../positions/position.entity';
-import { TeamEntity } from '../../teams/team.entity';
+import { ModelTimestamp } from '../typeorm/entities/modelTimestamp.entity';
+import { DepartmentEntity } from '../departments/department.entity';
+import { PositionEntity } from '../positions/position.entity';
+import { TeamEntity } from '../teams/team.entity';
+import { UsersEntity } from '../users/users.entity';
 
 @Entity({ name: 'employee_profile' })
 export class EmployeesEntity extends ModelTimestamp {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @OneToOne(() => UsersEntity)
+  @JoinColumn()
+  user: UsersEntity;
 
   @OneToOne(() => DepartmentEntity, {
     eager: true,
@@ -36,8 +41,6 @@ export class EmployeesEntity extends ModelTimestamp {
   positionId: number;
 
   @ManyToMany(() => TeamEntity, {
-    onDelete: 'CASCADE',
-    cascade: true,
     eager: true,
   })
   @JoinTable()

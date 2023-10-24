@@ -22,12 +22,16 @@ export class UsersService {
           teams: true,
         },
       },
-      sortableColumns: ['id', 'name', 'employeeProfile.department.name'],
+      sortableColumns: [
+        'id',
+        'name',
+        'employeeProfile.department.name',
+        'employeeProfile.position.name',
+      ],
       defaultSortBy: [['id', 'DESC']],
       searchableColumns: [
         'name',
         'employeeProfile.department.name',
-        'employeeProfile.position.id',
         'employeeProfile.position.name',
       ],
       select: [

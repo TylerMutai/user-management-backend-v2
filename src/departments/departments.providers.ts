@@ -1,13 +1,12 @@
 import { DataSource } from 'typeorm';
-import { MysqlDataSource } from '../datasource';
-import { DATA_SOURCE } from '../utils/constants';
+import { DATA_SOURCE, DEPARTMENTS_REPOSITORY } from '../utils/constants';
+import { DepartmentEntity } from './department.entity';
 
 export const departmentsProviders = [
   {
-    provide: DATA_SOURCE,
-    useFactory: async () => {
-      const dataSource = new DataSource(MysqlDataSource as any);
-      return dataSource.initialize();
-    },
+    provide: DEPARTMENTS_REPOSITORY,
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(DepartmentEntity),
+    inject: [DATA_SOURCE],
   },
 ];
