@@ -6,8 +6,14 @@ export type GetOneUserParams = {
   id: number;
 };
 
-export type CreateUserEmployeeProfileParams = {
+export type UserEmployeeProfileParams = {
   userId: number;
   departmentId: number;
   positionId: number;
 };
+
+export interface CreateUserEmployeeProfileParams
+  extends UserEmployeeProfileParams {}
+
+export interface UpdateUserEmployeeProfileParams
+  extends UserEmployeeProfileParams {}
